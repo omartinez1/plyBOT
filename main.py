@@ -1,9 +1,24 @@
 import discord
+from discord.ext import commands
+
+import json
+import os
+
+if os.path.exists(os.getcwd() + "/config.json"):
+    with open("./config.json") as f:
+        configData = json.load(f)
+else:
+    configTemplate = {"Token": "", "Prefix": "1"}
+
+    with open(os.getcwd() + "/config.json", "w+") as f:
+        json.dump(configTemplate, f)
+
 # Import the os module.
 import os
 # Import load_dotenv function from dotenv module.
 from discord.ext.commands import bot
 from dotenv import load_dotenv
+
 # Loads the .env file that resides on the same level as the script.
 load_dotenv()
 # Grab the API token from the .env file.
@@ -26,7 +41,7 @@ async def on_message(message):
         myEmbed.add_field(name="!testmistake", value="If you have a right answer on the test", inline=False)
         myEmbed.set_author(name="oscar's cool bot")
         myEmbed.add_field(name="!github", value="If you want to contribute to the bot.", inline=False)
-        myEmbed.set_author(name="oscar's cool bot")
+        myEmbed.set_author(name="plc bot")
         await message.channel.send(embed=myEmbed)
 
     # produces results of commands
@@ -44,5 +59,15 @@ async def on_message(message):
     if message.content.lower().startswith("!testmistake"):
         await message.channel.send("Email the TA and CC the professor in the email.")
 
+token = configData["Token"]
+prefix = configData["Prefix"]
 
-client.run('NzY1NjExOTI4OTE5MDgwOTgy.X4XVrA.rHrftNOte5Mce4TUd7n0PFYjqsY')
+bot = commands.Bot(command_prefix="!")
+
+
+@bot.event
+async def on_ready():
+    print("Bot is ready")
+
+
+bot.run(token)
