@@ -1,28 +1,11 @@
 import discord
 from discord.ext import commands
-
-import json
-import os
-
-if os.path.exists(os.getcwd() + "/config.json"):
-    with open("./config.json") as f:
-        configData = json.load(f)
-else:
-    configTemplate = {"Token": "", "Prefix": "1"}
-
-    with open(os.getcwd() + "/config.json", "w+") as f:
-        json.dump(configTemplate, f)
-
-# Import the os module.
 import os
 # Import load_dotenv function from dotenv module.
-from discord.ext.commands import bot
 from dotenv import load_dotenv
 
-# Loads the .env file that resides on the same level as the script.
-load_dotenv()
-# Grab the API token from the .env file.
-DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+# Credentials
+load_dotenv('.env')
 
 client = discord.Client()
 
@@ -58,16 +41,8 @@ async def on_message(message):
                                    "https://docs.google.com/document/d/1bVaHYG7Azg_3Lu1kQjpwZngRVaUOBBI008hdWY3jBpM/edit?usp=sharing")
     if message.content.lower().startswith("!testmistake"):
         await message.channel.send("Email the TA and CC the professor in the email.")
-
-token = configData["Token"]
-prefix = configData["Prefix"]
-
-bot = commands.Bot(command_prefix="!")
+    if message.content.lower().startswith("!github"):
+        await message.channel.send("Feel free to contribute:\nhttps://github.com/omartinez1/plyBOT")
 
 
-@bot.event
-async def on_ready():
-    print("Bot is ready")
-
-
-bot.run(token)
+client.run(os.getenv('TUTORIAL_BOT_TOKEN'))
