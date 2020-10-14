@@ -37,7 +37,7 @@ async def on_message(message):
         myEmbed.add_field(name="!emails", value="Gives TA & professors name & emails", inline=False)
         myEmbed.add_field(name="!exam", value="Exam info", inline=False)
         myEmbed.add_field(name="!topics", value="Topics discussed in latest q&a", inline=False)
-        myEmbed.add_field(name="!curve", value="Curve for the class", inline=False)
+        myEmbed.add_field(name="!curve", value="Explains curve question.", inline=False)
         myEmbed.add_field(name="!testmistake", value="If you have a right answer on the test", inline=False)
         myEmbed.set_author(name="oscar's cool bot")
         myEmbed.add_field(name="!github", value="If you want to contribute to the bot.", inline=False)
@@ -54,7 +54,7 @@ async def on_message(message):
     if message.content.lower().startswith("!curve"):
         await message.channel.send("Only if the class average is like less than a C low, don't count on it.")
     if message.content.lower().startswith("!topics"):
-        await message.channel.send("Watch the Q&A. \n"
+        await message.channel.send("Watch the Q&A, please: \n"
                                    "https://docs.google.com/document/d/1bVaHYG7Azg_3Lu1kQjpwZngRVaUOBBI008hdWY3jBpM/edit?usp=sharing")
     if message.content.lower().startswith("!testmistake"):
         await message.channel.send("Email the TA and CC the professor in the email.")
