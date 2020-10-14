@@ -33,14 +33,14 @@ async def on_message(message):
                                    "TA\nShivam Jaitly\nsjaitly1@student.gsu.edu\nTA\nChan Aek"
                                    "Panichvatana: ncpanichvatana1@student.gsu.edu")
     if message.content.lower().startswith("!exam"):
-        await message.channel.send("We only have 3 exams in the semester: 2 regular test and 1 final.")
+        await message.channel.send("We only have 3 exams in the semester: 2 regular tests and 1 final.")
     if message.content.lower().startswith("!curve"):
-        await message.channel.send("Only if the class average is like less than a C low, don't count on it.")
+        await message.channel.send("Only if the class average is like less than a C-, don't count on it.")
     if message.content.lower().startswith("!topics"):
         await message.channel.send("Watch the Q&A, please: \n"
                                    "https://docs.google.com/document/d/1bVaHYG7Azg_3Lu1kQjpwZngRVaUOBBI008hdWY3jBpM/edit?usp=sharing")
     if message.content.lower().startswith("!testmistake"):
-        await message.channel.send("Email the TA and CC the professor in the email.")
+        await message.channel.send("Email a TA and CC the professor in the email.")
     if message.content.lower().startswith("!github"):
         await message.channel.send("Feel free to contribute:\nhttps://github.com/omartinez1/plyBOT")
 
